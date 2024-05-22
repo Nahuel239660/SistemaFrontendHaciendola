@@ -1,16 +1,13 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Contenedor */
 .container-fluid {
     padding-left: 250px;
 }
 
-/* Navbar */
 .navbar {
     background-color: #343a40;
     color: #ffffff;
@@ -40,11 +37,11 @@ body {
     background-color: #4e5256;
 }
 
-/* Contenido */
 .content {
     margin-left: 250px;
     padding: 20px;
     margin-top: 80px;
+    overflow-x: auto; /* Asegura que haya desplazamiento horizontal */
 }
 
 .content h2 {
@@ -55,16 +52,19 @@ body {
     margin-right: 10px;
 }
 
-/* Tabla */
 .table {
     margin-top: 20px;
+    width: 100%;
+    max-width: 100%; /* Asegura que la tabla no sea más grande que su contenedor */
+    display: block; /* Asegura que la tabla se comporte bien en pantallas pequeñas */
+    overflow-x: auto; /* Asegura el desplazamiento horizontal */
+    white-space: nowrap; /* Evita que las celdas se envuelvan */
 }
 
 .table th,
 .table td {
     vertical-align: middle;
     text-align: center;
-    word-wrap: break-word;
 }
 
 .table th {
@@ -98,7 +98,6 @@ body {
     background-color: #f2f2f2;
 }
 
-/* Media queries */
 @media (max-width: 768px) {
     .container-fluid {
         padding-left: 0;
@@ -112,6 +111,14 @@ body {
     .content {
         margin-left: 0;
         padding: 10px;
+    }
+
+    .table {
+        margin-left: auto;
+        margin-right: auto; /* Centra la tabla horizontalmente */
+        display: block;
+        overflow-x: auto; /* Asegura el desplazamiento horizontal */
+        width: 100%; /* Asegura que la tabla no sea más grande que su contenedor */
     }
 }
 
@@ -127,12 +134,10 @@ body {
     }
 
     .table {
-        width: 100%;
+        margin-left: auto;
+        margin-right: auto; /* Centra la tabla horizontalmente */
         display: block;
-        overflow-x: auto;
-    }
-
-    .table th, .table td {
-        white-space: nowrap;
+        overflow-x: auto; /* Asegura el desplazamiento horizontal */
+        width: 100%; /* Asegura que la tabla no sea más grande que su contenedor */
     }
 }

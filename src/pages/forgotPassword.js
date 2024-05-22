@@ -16,6 +16,7 @@ const ForgotPassword = () => {
             setMessage('Si el correo electrónico está registrado, se ha enviado un enlace para restablecer la contraseña.');
         } catch (error) {
             console.error('Error al enviar el enlace de restablecimiento:', error.response?.data || error.message);
+            
         }
     };
 

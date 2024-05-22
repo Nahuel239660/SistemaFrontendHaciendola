@@ -101,33 +101,45 @@ const ProductManager = () => {
 
             <div className="content">
                 {showTable && (
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Stock</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {products.map((product, index) => (
-                                <tr key={product.id}>
-                                    <td>{index + 1}</td>
-                                    <td>{product.title}</td>
-                                    <td>{product.price}</td>
-                                    <td>{product.stock}</td>
-                                    <td>
-                                        <Button variant="danger" size="sm" onClick={() => handleShowConfirmModal(product)}>Eliminar</Button>
-                                        <Button variant="primary" size="sm" onClick={() => handleShowEditProduct(product)}>Editar</Button>
-                                    </td>
+                    <div className="table-responsive">
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción</th>
+                                    <th>SKU</th>
+                                    <th>Gramos</th>
+                                    <th>Stock</th>
+                                    <th>Precio</th>
+                                    <th>Precio de Comparación</th>
+                                    <th>Código de Barras</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                                {products.map((product, index) => (
+                                    <tr key={product.id}>
+                                        <td>{index + 1}</td>
+                                        <td>{product.title}</td>
+                                        <td>{product.description}</td>
+                                        <td>{product.sku}</td>
+                                        <td>{product.grams}</td>
+                                        <td>{product.stock}</td>
+                                        <td>{product.price}</td>
+                                        <td>{product.comparePrice}</td>
+                                        <td>{product.barcode}</td>
+                                        <td>
+                                            <Button variant="danger" size="sm" onClick={() => handleShowConfirmModal(product)}>Eliminar</Button>
+                                            <Button variant="primary" size="sm" onClick={() => handleShowEditProduct(product)}>Editar</Button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 )}
-                {showCreateProduct && <CreateProductModal onClose={handleCloseCreateProduct} />}
+                {showCreateProduct && <CreateProductModal onClose={handleCloseCreateProduct} onProductAdded={fetchProducts} />}
                 {showEditProduct && <EditProductModal product={productToEdit} onClose={handleCloseEditProduct} onSave={fetchProducts} />}
                 <Modal show={showConfirmModal} onHide={handleCloseConfirmModal}>
                     <Modal.Header closeButton>
